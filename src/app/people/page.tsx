@@ -1,7 +1,14 @@
+"use client";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { teamMembers, principalInvestigator } from "./people";
 export default function Page() {
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
       <div className="mb-12 text-center">
@@ -23,6 +30,8 @@ export default function Page() {
                 width={200}
                 height={200}
                 className="rounded-full bg-black object-cover"
+                draggable={false}
+                onContextMenu={handleContextMenu}
               />
             </div>
             <CardTitle className="text-2xl">
@@ -61,6 +70,8 @@ export default function Page() {
                   width={150}
                   height={150}
                   className="rounded-full bg-black object-cover"
+                  draggable={false}
+                  onContextMenu={handleContextMenu}
                 />
               </div>
               <CardTitle>{member.name}</CardTitle>

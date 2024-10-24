@@ -1,7 +1,14 @@
+"use client";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { researchAreas } from "./research";
 export default function Page() {
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="container px-4 py-8">
       <div className="grid gap-8 lg:grid-cols-3">
@@ -36,6 +43,8 @@ export default function Page() {
               width={400}
               height={300}
               className="w-full rounded-lg bg-black object-cover"
+              draggable={false}
+              onContextMenu={handleContextMenu}
             />
             <p className="mt-2 text-center text-sm text-muted-foreground">
               Simulation of a Biomolecular Interaction
@@ -48,6 +57,8 @@ export default function Page() {
               width={400}
               height={400}
               className="w-full rounded-lg bg-black object-cover"
+              draggable={false}
+              onContextMenu={handleContextMenu}
             />
             <p className="mt-2 text-center text-sm text-muted-foreground">
               Visualization interaction

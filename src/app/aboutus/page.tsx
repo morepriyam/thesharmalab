@@ -11,9 +11,14 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Page() {
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="container space-y-16 px-4 pb-8">
-      {/* Hero Section */}
       <section className="relative">
         <Image
           src="/images/sharma-lab-hero.jpg"
@@ -21,6 +26,8 @@ export default function Page() {
           width={1200}
           height={600}
           className="h-[30vh] w-full rounded-lg object-cover"
+          draggable={false}
+          onContextMenu={handleContextMenu}
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <h1 className="text-center text-4xl font-bold text-white lg:text-5xl">
@@ -29,7 +36,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* About Us Content */}
       <section className="grid items-center gap-8 lg:grid-cols-2">
         <div className="space-y-4">
           <h2 className="text-center text-3xl font-bold md:text-left">
@@ -56,9 +62,10 @@ export default function Page() {
           width={100}
           height={100}
           className="flex h-[40vh] w-full justify-center rounded-lg bg-black"
+          draggable={false}
+          onContextMenu={handleContextMenu}
         />
       </section>
-      {/* FAQ Section */}
       <section className="space-y-8">
         <h2 className="text-center text-3xl font-bold">
           Frequently Asked Questions
@@ -100,8 +107,6 @@ export default function Page() {
           </AccordionItem>
         </Accordion>
       </section>
-
-      {/* Call to Action */}
       <section className="rounded-lg bg-primary p-8 text-center text-primary-foreground">
         <h2 className="mb-4 text-3xl font-bold">Join Our Research Team</h2>
         <p className="mb-6 text-lg">
