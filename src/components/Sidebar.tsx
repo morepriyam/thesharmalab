@@ -1,0 +1,130 @@
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
+export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen2(!isOpen2);
+  };
+
+  const closeSidebar = () => {
+    setIsOpen2(false);
+  };
+
+  const links = [
+    { name: "About Us", url: "/aboutus" },
+    { name: "Research", url: "/research" },
+    { name: "People", url: "/people" },
+    { name: "Publications", url: "/publications" },
+    { name: "Teaching", url: "/teaching" },
+    { name: "Contact Us", url: "/contact" },
+  ];
+
+  return (
+    <div className="flex">
+      {!isOpen2 && (
+        <div className="relative w-full p-4 sm:hidden">
+          <div className="absolute right-4 top-4">
+            <button
+              onClick={toggleSidebar}
+              data-drawer-toggle="default-sidebar"
+              type="button"
+              className="inline-flex items-center text-sm"
+            >
+              <svg
+                className="h-7 w-7"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="flex justify-center text-xl">
+            <span className="font-mono">The Sharma Lab</span>
+          </div>
+        </div>
+      )}
+
+      <aside
+        className={`fixed left-0 top-0 z-40 h-screen w-64 transition-transform ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } sm:translate-x-0`}
+        aria-label="Sidebar"
+      >
+        <div className="relative h-full overflow-y-auto px-3 py-4">
+          <div className="absolute left-14 top-14">
+            <Image
+              src="/pfwlogo.webp"
+              alt="Purdue University Fort Wayne Logo"
+              width={150}
+              height={60}
+            />
+          </div>
+          <ul className="mt-48 space-y-2 font-medium">
+            <li>
+              <Link
+                onClick={closeSidebar}
+                href={"/"}
+                className="block rounded-lg p-2 font-mono"
+              >
+                The Sharma Lab
+              </Link>
+            </li>
+            {links.map((link) => (
+              <li key={link.name}>
+                <Link
+                  href={link.url}
+                  className="block rounded-lg p-2 text-gray-400 hover:text-gray-900"
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      {isOpen2 && (
+        <div className="fixed inset-0 z-50 flex flex-col items-end justify-start bg-white bg-opacity-100 sm:hidden">
+          <button onClick={toggleSidebar} className="p-4 text-3xl">
+            &times;
+          </button>
+          <div className="flex h-full w-full items-center justify-center">
+            <ul className="flex flex-col items-center space-y-4 text-xl font-medium">
+              <li>
+                <Link
+                  onClick={closeSidebar}
+                  href={"/"}
+                  className="block p-3 font-mono"
+                >
+                  The Sharma Lab
+                </Link>
+              </li>
+              {links.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    onClick={closeSidebar}
+                    href={link.url}
+                    className="block p-3 text-gray-400 hover:text-gray-900"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
