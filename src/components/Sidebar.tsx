@@ -15,6 +15,12 @@ export default function Sidebar() {
     setIsOpen2(false);
   };
 
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   const links = [
     { name: "About Us", url: "/aboutus" },
     { name: "Research", url: "/research" },
@@ -50,7 +56,7 @@ export default function Sidebar() {
             </button>
           </div>
           <div className="flex justify-center text-xl">
-            <span className="font-mono">The Sharma Lab</span>
+            <span className="font-mono font-bold">The Sharma Lab</span>
           </div>
         </div>
       )}
@@ -62,20 +68,22 @@ export default function Sidebar() {
         aria-label="Sidebar"
       >
         <div className="relative h-full overflow-y-auto px-3 py-4">
-          <div className="absolute left-14 top-14">
+          <div className="absolute left-6 top-24">
             <Image
               src="/pfwlogo.webp"
               alt="Purdue University Fort Wayne Logo"
               width={150}
               height={60}
+              draggable={false}
+              onContextMenu={handleContextMenu}
             />
           </div>
-          <ul className="mt-48 space-y-2 font-medium">
+          <ul className="absolute mt-48 space-y-2">
             <li>
               <Link
                 onClick={closeSidebar}
                 href={"/"}
-                className="block rounded-lg p-2 font-mono"
+                className="block rounded-lg p-2 font-mono font-bold"
               >
                 The Sharma Lab
               </Link>
@@ -84,7 +92,7 @@ export default function Sidebar() {
               <li key={link.name}>
                 <Link
                   href={link.url}
-                  className="block rounded-lg p-2 text-gray-400 hover:text-gray-900"
+                  className="block rounded-lg p-2 font-medium text-gray-400 hover:text-gray-950"
                 >
                   {link.name}
                 </Link>
@@ -99,13 +107,23 @@ export default function Sidebar() {
           <button onClick={toggleSidebar} className="p-4 text-3xl">
             &times;
           </button>
-          <div className="flex h-full w-full items-center justify-center">
-            <ul className="flex flex-col items-center space-y-4 text-xl font-medium">
+          <div className="relative flex h-full w-full items-center justify-center">
+            <div className="absolute top-28">
+              <Image
+                src="/pfwlogo.webp"
+                alt="Purdue University Fort Wayne Logo"
+                width={150}
+                height={60}
+                draggable={false}
+                onContextMenu={handleContextMenu}
+              />
+            </div>
+            <ul className="flex flex-col items-center space-y-4 text-xl">
               <li>
                 <Link
                   onClick={closeSidebar}
                   href={"/"}
-                  className="block p-3 font-mono"
+                  className="block p-3 font-mono font-bold"
                 >
                   The Sharma Lab
                 </Link>
@@ -115,7 +133,7 @@ export default function Sidebar() {
                   <Link
                     onClick={closeSidebar}
                     href={link.url}
-                    className="block p-3 text-gray-400 hover:text-gray-900"
+                    className="block p-3 font-medium text-gray-400 hover:text-gray-950"
                   >
                     {link.name}
                   </Link>

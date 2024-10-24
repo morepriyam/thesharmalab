@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -47,6 +47,12 @@ const navItems = [
 ];
 
 export default function Page() {
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
@@ -76,6 +82,8 @@ export default function Page() {
             layout="fill"
             objectFit="cover"
             priority
+            draggable={false}
+            onContextMenu={handleContextMenu}
           />
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white">
@@ -117,6 +125,8 @@ export default function Page() {
                     alt={item.title}
                     layout="fill"
                     objectFit="cover"
+                    draggable={false}
+                    onContextMenu={handleContextMenu}
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
                     <h2 className="text-center text-2xl font-semibold text-white">

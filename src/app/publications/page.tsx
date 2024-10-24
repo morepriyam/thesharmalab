@@ -1,9 +1,16 @@
+"use client";
 import React from "react";
 import { publications } from "./publications";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
 export default function page() {
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="container px-4 py-8">
       <h1 className="mb-8 text-center text-4xl font-bold">Publications</h1>
@@ -15,6 +22,8 @@ export default function page() {
           width={200}
           height={300}
           className="rounded-lg shadow-lg"
+          draggable={false}
+          onContextMenu={handleContextMenu}
         />
         <Image
           src="/physicalchemistry.webp"
@@ -22,6 +31,8 @@ export default function page() {
           width={200}
           height={300}
           className="rounded-lg shadow-lg"
+          draggable={false}
+          onContextMenu={handleContextMenu}
         />
       </div>
       <Card>
