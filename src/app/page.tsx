@@ -74,7 +74,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="relative h-[60vh]">
+      <header className="px-50 relative h-[55vh]">
         <div className="absolute inset-0">
           <Image
             src={images[currentImage]}

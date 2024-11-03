@@ -31,10 +31,10 @@ export default function Page() {
   return (
     <div className="p-4">
       <div className="mt-4 text-center font-mono text-xl">
-        <h1 className="text-3xl font-bold">Teaching</h1>
+        <h1 className="text-4xl font-bold lg:text-5xl">Teaching</h1>
       </div>
 
-      <div className="mt-12 w-full space-y-8">
+      <div className="mt-[8%] w-full space-y-8">
         {courses.map((course) => (
           <div key={course.code} className="border-b pb-4">
             <h2 className="font-mono text-2xl font-bold">{course.code}</h2>

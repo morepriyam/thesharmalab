@@ -3,12 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 export default function Page() {
   const handleContextMenu = (
@@ -18,28 +12,19 @@ export default function Page() {
   };
 
   return (
-    <div className="container space-y-16 px-4 pb-8">
-      <section className="relative">
-        <Image
-          src="/images/sharma-lab-hero.jpg"
-          alt="The Sharma Lab"
-          width={1200}
-          height={600}
-          className="h-[30vh] w-full rounded-lg object-cover"
-          draggable={false}
-          onContextMenu={handleContextMenu}
-        />
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-center text-4xl font-bold text-white lg:text-5xl">
-            About The Sharma Lab
+    <div className="container relative space-y-16 px-4 pb-8">
+      <section className="relative mt-2 h-[10vh]">
+        <div className="absolute inset-0 flex items-center justify-center bg-opacity-50">
+          <h1 className="text-center text-4xl font-bold text-black lg:text-5xl">
+            About Us
           </h1>
         </div>
       </section>
 
-      <section className="grid items-center gap-8 lg:grid-cols-2">
+      <section className="mt-4 grid items-center gap-8 lg:grid-cols-2">
         <div className="space-y-4">
           <h2 className="text-center text-3xl font-bold md:text-left">
-            Our Mission
+            About Us
           </h2>
           <p className="text-center text-lg text-muted-foreground md:text-left">
             The Sharma Lab, situated within Purdue University's Department of
@@ -66,48 +51,7 @@ export default function Page() {
           onContextMenu={handleContextMenu}
         />
       </section>
-      <section className="space-y-8">
-        <h2 className="text-center text-3xl font-bold">
-          Frequently Asked Questions
-        </h2>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>
-              What is molecular dynamics simulation?
-            </AccordionTrigger>
-            <AccordionContent>
-              Molecular dynamics simulation is a computer simulation method for
-              analyzing the physical movements of atoms and molecules. The atoms
-              and molecules are allowed to interact for a fixed period of time,
-              giving a view of the dynamic evolution of the system.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>
-              How does your research impact human health?
-            </AccordionTrigger>
-            <AccordionContent>
-              Our research helps in understanding the molecular mechanisms
-              behind chronic metabolic diseases and immune system disorders.
-              This knowledge can lead to the development of new treatments and
-              drugs, potentially improving the lives of millions of people
-              affected by these conditions.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>
-              Can I collaborate with the Sharma Lab?
-            </AccordionTrigger>
-            <AccordionContent>
-              We welcome collaborations with other researchers and institutions.
-              If you're interested in collaborating, please reach out to us via
-              email or through our contact form. We'll be happy to discuss
-              potential research opportunities.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </section>
-      <section className="rounded-lg bg-primary p-8 text-center text-primary-foreground">
+      <section className="absolute left-0 right-0 rounded-lg bg-[#CFB991] p-8 text-center text-black">
         <h2 className="mb-4 text-3xl font-bold">Join Our Research Team</h2>
         <p className="mb-6 text-lg">
           We're always looking for passionate researchers to join our team. If
