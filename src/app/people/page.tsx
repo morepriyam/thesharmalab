@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div className="container mx-auto max-w-6xl px-4 py-8">
       <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold">Our Team</h1>
+        <h1 className="mb-4 text-4xl font-bold lg:text-5xl">Our Team</h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
           We seek to maintain a diverse research environment that stimulates the
           professional development of our members. We highly value teamwork,
@@ -69,7 +69,7 @@ export default function Page() {
                   alt={member.name}
                   width={150}
                   height={150}
-                  className="rounded-full bg-black object-cover"
+                  className="h-32 w-32 rounded-full bg-black object-cover"
                   draggable={false}
                   onContextMenu={handleContextMenu}
                 />

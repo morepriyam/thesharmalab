@@ -12,8 +12,10 @@ export default function page() {
   };
 
   return (
-    <div className="container px-4 py-8">
-      <h1 className="mb-8 text-center text-4xl font-bold">Publications</h1>
+    <div className="container mt-4 p-4">
+      <h1 className="mb-8 text-center text-4xl font-bold lg:text-5xl">
+        Publications
+      </h1>
 
       <div className="mb-12 flex justify-center gap-8 xl:justify-start">
         <Image
