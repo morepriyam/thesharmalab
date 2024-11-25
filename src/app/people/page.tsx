@@ -29,10 +29,10 @@ export default function Page() {
                 alt={principalInvestigator.name}
                 width={200}
                 height={200}
-                className="rounded-full bg-black object-cover"
+                className="rounded-full h-44 w-44  bg-black object-cover object-top"
                 draggable={false}
-                onContextMenu={handleContextMenu}
-              />
+                onContextMenu={handleContextMenu} 
+              /> 
             </div>
             <CardTitle className="text-2xl">
               {principalInvestigator.name}
@@ -69,7 +69,7 @@ export default function Page() {
                   alt={member.name}
                   width={150}
                   height={150}
-                  className="h-32 w-32 rounded-full bg-black object-cover"
+                  className="h-32 w-32 rounded-full bg-black object-contain"
                   draggable={false}
                   onContextMenu={handleContextMenu}
                 />
