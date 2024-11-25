@@ -29,7 +29,7 @@ export default function Page() {
                 alt={principalInvestigator.name}
                 width={200}
                 height={200}
-                className="rounded-full h-44 w-44  bg-black object-cover object-top"
+                className="rounded-full h-44 w-44 object-cover object-top"
                 draggable={false}
                 onContextMenu={handleContextMenu} 
               /> 
@@ -69,7 +69,7 @@ export default function Page() {
                   alt={member.name}
                   width={150}
                   height={150}
-                  className="h-32 w-32 rounded-full bg-black object-contain"
+                  className="h-32 w-32 rounded-full object-contain"
                   draggable={false}
                   onContextMenu={handleContextMenu}
                 />

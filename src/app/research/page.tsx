@@ -1,18 +1,24 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { researchAreas } from "./research";
+import { useState } from "react";
 import Image from "next/image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { researchAreas } from "./research";
 
 export default function Page() {
-  const handleContextMenu = (
-    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
-  ) => {
-    event.preventDefault();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleImageClick = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
   };
 
   return (
-    <div className="container mx-auto py-12 px-4">
+    <div className="container mx-auto px-4 py-12">
       <div className="mb-12 text-center">
         <h1 className="mb-4 text-4xl font-bold lg:text-5xl">Research</h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -22,16 +28,16 @@ export default function Page() {
           research group.
         </p>
       </div>
-      <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
         {researchAreas.map((area, index) => (
           <Card key={index} className="flex flex-col overflow-hidden">
-            <div className="relative h-64 w-full">
+            <div className="relative h-[300px] w-full">
               <Image
                 src={area.image}
                 alt={area.title}
                 fill
-                className="object-cover"
-                onContextMenu={handleContextMenu}
+                className="cursor-pointer rounded-t-lg object-cover transition-transform hover:scale-105"
+                onClick={() => handleImageClick(area.image)}
               />
             </div>
             <div className="flex flex-grow flex-col justify-center p-6">
@@ -45,7 +51,19 @@ export default function Page() {
           </Card>
         ))}
       </div>
+      <Dialog open={!!selectedImage} onOpenChange={handleCloseModal}>
+        <DialogContent className="max-w-3xl">
+          {selectedImage && (
+            <Image
+              src={selectedImage}
+              alt="Research area"
+              width={1200}
+              height={900}
+              className="h-auto w-full object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
-
