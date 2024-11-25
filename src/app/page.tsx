@@ -7,41 +7,37 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const images = [
-  "/placeholder.svg?height=600&width=1200&text=Lab+Image+1",
-  "/placeholder.svg?height=600&width=1200&text=Lab+Image+2",
-  "/placeholder.svg?height=600&width=1200&text=Lab+Image+3",
-];
+const images = ["/chem2.webp", "/chem3.webp", "/chem4.webp"];
 
 const navItems = [
   {
     title: "About Us",
-    image: "/placeholder.svg?height=200&width=300&text=About+Us",
+    image: "/statue.webp",
     href: "/aboutus",
   },
   {
     title: "People",
-    image: "/placeholder.svg?height=200&width=300&text=People",
+    image: "/people.webp",
     href: "/people",
   },
   {
     title: "Research",
-    image: "/placeholder.svg?height=200&width=300&text=Research",
+    image: "/chem1.webp",
     href: "/research",
   },
   {
     title: "Publications",
-    image: "/placeholder.svg?height=200&width=300&text=Publications",
+    image: "/acscover.webp",
     href: "/publications",
   },
   {
     title: "Teaching",
-    image: "/placeholder.svg?height=200&width=300&text=Teaching",
+    image: "/teaching.webp",
     href: "/teaching",
   },
   {
     title: "Contact Us",
-    image: "/placeholder.svg?height=200&width=300&text=Contact+Us",
+    image: "/mastodon.webp",
     href: "/contact",
   },
 ];
@@ -86,7 +82,7 @@ export default function Page() {
             onContextMenu={handleContextMenu}
           />
         </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           <h1 className="mb-2 text-center text-4xl font-bold md:text-6xl">
             The Sharma Lab
           </h1>
@@ -128,8 +124,8 @@ export default function Page() {
                     draggable={false}
                     onContextMenu={handleContextMenu}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
-                    <h2 className="text-center text-2xl font-semibold text-white">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <h2 className="text-center text-2xl font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                       {item.title}
                     </h2>
                   </div>

@@ -25,6 +25,14 @@ export const teamMembers = [
     email: "adjurovi@purdue.edu",
   },
   {
+    name: "Madeleine Wisniewski",
+    description:
+      "My name is Madeleine Wisniewski. I am an undergraduate student at Purdue University-Fort Wayne, majoring in Biochemistry. I plan on attending graduate school and getting a PhD in Pharmaceutical Sciences. I am very interested in drug discovery and research in drug development. I would ultimately like to become a pharmaceutical chemist focusing on Immunology or Cancer research.",
+    role: "Undergraduate Researcher",
+    imageSrc: "/people/madeleine.webp",
+    email: "wisnme01@pfw.edu",
+  },
+  {
     name: "Izabela Djurovic-Topalovic",
     role: "Graduate Student",
     description:
@@ -46,6 +54,6 @@ export const teamMembers = [
     description:
       "Austin Jones is currently a lab manager at Purdue University in Fort Wayne. He received his bachelor’s degree in chemistry from Ball State University in 2020. As an undergraduate, he was involved in a research project focusing on the synthesis of the natural product Lavendamycin under the guidance of Professor Robert Sammelson. After his undergraduate program, Austin earned his master’s degree from Michigan State University in 2022 under the direction of Professor Karen Draths. As a graduate student, he investigated the reaction mechanism of terminal alkyne carboxylation using organic bases and carbon dioxide. Austin is currently pursuing an additional bachelor's degree in data analytics while working at PFW.",
     imageSrc: "/people/austin.webp",
-    email: "",
+    email: "jone2401@pfw.edu",
   },
 ];
