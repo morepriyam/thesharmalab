@@ -69,7 +69,7 @@ export default function Page() {
                   alt={member.name}
                   width={150}
                   height={150}
-                  className="h-32 w-32 rounded-full object-contain"
+                  className="h-32 w-32 rounded-full object-cover"
                   draggable={false}
                   onContextMenu={handleContextMenu}
                 />
