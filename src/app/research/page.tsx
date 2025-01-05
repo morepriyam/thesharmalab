@@ -41,6 +41,7 @@ export default function Page() {
                   fill
                   className="cursor-pointer object-cover object-center transition-transform hover:scale-105"
                   onClick={() => handleImageClick(area.image)}
+                  loading="lazy"
                 />
               </div>
             </div>

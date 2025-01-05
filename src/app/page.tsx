@@ -76,6 +76,7 @@ export default function Page() {
             src={images[currentImage]}
             alt={`Lab image ${currentImage + 1}`}
             draggable={false}
+            loading="lazy"
             className="h-full w-full object-cover"
             height={600}
             width={1200}
@@ -118,6 +119,7 @@ export default function Page() {
                     src={item.image}
                     alt={item.title}
                     draggable={false}
+                    loading="lazy"
                     className="h-full w-full object-cover"
                     height={192}
                     width={384}

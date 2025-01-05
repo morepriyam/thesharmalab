@@ -22,6 +22,7 @@ export default function page() {
           src="/acscover.webp"
           alt="Computational Chemistry: Principles and Applications"
           width={200}
+          loading="lazy"
           height={300}
           className="rounded-lg shadow-lg"
           draggable={false}
@@ -34,6 +35,7 @@ export default function page() {
           height={300}
           className="rounded-lg shadow-lg"
           draggable={false}
+          loading="lazy"
           onContextMenu={handleContextMenu}
         />
       </div>
