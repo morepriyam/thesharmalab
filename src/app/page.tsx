@@ -75,8 +75,8 @@ export default function Page() {
           <Image
             src={images[currentImage]}
             alt={`Lab image ${currentImage + 1}`}
-            layout="fill"
-            objectFit="cover"
+            fill={true}
+            style={{ objectFit: "cover" }}
             priority
             draggable={false}
             onContextMenu={handleContextMenu}
@@ -119,13 +119,14 @@ export default function Page() {
                   <Image
                     src={item.image}
                     alt={item.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill={true}
+                    style={{ objectFit: "cover" }}
                     draggable={false}
                     onContextMenu={handleContextMenu}
+                    className=""
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <h2 className="text-center text-2xl font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                  <div className="backdrop-blur-1 absolute inset-0 flex items-center justify-center bg-black bg-opacity-15 text-2xl transition-all duration-300 hover:text-3xl">
+                    <h2 className="text-center font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                       {item.title}
                     </h2>
                   </div>

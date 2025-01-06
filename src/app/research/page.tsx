@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { researchAreas } from "./research";
 
@@ -28,25 +28,25 @@ export default function Page() {
           research group.
         </p>
       </div>
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+      <div className="space-y-8">
         {researchAreas.map((area, index) => (
-          <Card key={index} className="flex flex-col overflow-hidden">
-            <div className="relative h-[300px] w-full">
-              <Image
-                src={area.image}
-                alt={area.title}
-                fill
-                className="cursor-pointer rounded-t-lg object-cover transition-transform hover:scale-105"
-                onClick={() => handleImageClick(area.image)}
-              />
-            </div>
-            <div className="flex flex-grow flex-col justify-center p-6">
-              <CardHeader className="p-0">
-                <CardTitle className="mb-4 text-2xl">{area.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
+          <Card key={index} className="overflow-hidden">
+            <div className="flex flex-col md:flex-row">
+              <CardContent className="flex flex-grow flex-col justify-center p-6">
+                <h2 className="mb-4 text-2xl font-semibold">{area.title}</h2>
                 <p className="text-muted-foreground">{area.description}</p>
               </CardContent>
+              <div className="relative flex w-full items-center justify-center p-4 md:w-1/3">
+                <div className="relative h-[200px] w-full max-w-[300px]">
+                  <Image
+                    src={area.image}
+                    alt={area.title}
+                    fill
+                    className="cursor-pointer rounded-lg object-cover transition-transform hover:scale-105"
+                    onClick={() => handleImageClick(area.image)}
+                  />
+                </div>
+              </div>
             </div>
           </Card>
         ))}
