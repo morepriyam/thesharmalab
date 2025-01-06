@@ -63,70 +63,70 @@ export default function Page() {
   };
 
   const prevImage = () => {
-    setCurrentImage((prevImage) =>
-      prevImage === 0 ? images.length - 1 : prevImage - 1,
+    setCurrentImage(
+      (prevImage) => (prevImage - 1 + images.length) % images.length,
     );
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="relative h-[60vh]">
+    <div className="min-h-screen bg-background">
+      <header className="px-50 relative h-[55vh]">
         <div className="absolute inset-0">
           <Image
             src={images[currentImage]}
             alt={`Lab image ${currentImage + 1}`}
+            fill={true}
+            style={{ objectFit: "cover" }}
+            priority
             draggable={false}
-            loading="lazy"
-            className="h-full w-full object-cover"
-            height={600}
-            width={1200}
             onContextMenu={handleContextMenu}
           />
         </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-center text-4xl font-extrabold drop-shadow-lg md:text-6xl">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          <h1 className="mb-2 text-center text-4xl font-bold md:text-6xl">
             The Sharma Lab
           </h1>
-          <p className="mt-2 text-lg font-medium md:text-xl">
+          <p className="mb-4 text-lg md:text-xl">
             Purdue University Fort Wayne
           </p>
         </div>
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
-          className="absolute left-6 top-1/2 -translate-y-1/2 transform bg-black bg-opacity-40 text-white hover:bg-opacity-60"
+          className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white bg-opacity-50 hover:bg-opacity-75"
           onClick={prevImage}
         >
-          <ChevronLeft className="h-6 w-6" />
+          <ChevronLeft className="h-4 w-4" />
+          <span className="sr-only">Previous image</span>
         </Button>
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
-          className="absolute right-6 top-1/2 -translate-y-1/2 transform bg-black bg-opacity-40 text-white hover:bg-opacity-60"
+          className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white bg-opacity-50 hover:bg-opacity-75"
           onClick={nextImage}
         >
-          <ChevronRight className="h-6 w-6" />
+          <ChevronRight className="h-4 w-4" />
+          <span className="sr-only">Next image</span>
         </Button>
       </header>
 
       <nav className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {navItems.map((item, index) => (
             <Link href={item.href} key={index} passHref>
-              <Card className="cursor-pointer overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+              <Card className="cursor-pointer overflow-hidden transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48">
                   <Image
                     src={item.image}
                     alt={item.title}
+                    fill={true}
+                    style={{ objectFit: "cover" }}
                     draggable={false}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    height={192}
-                    width={384}
                     onContextMenu={handleContextMenu}
+                    className=""
                   />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <h2 className="text-center text-xl font-bold text-white">
+                  <div className="backdrop-blur-1 absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 text-2xl transition-all duration-300 hover:text-3xl">
+                    <h2 className="text-center font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                       {item.title}
                     </h2>
                   </div>

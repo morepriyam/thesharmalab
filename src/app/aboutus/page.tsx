@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div className="flex min-h-screen flex-col">
       <div className="container flex-grow space-y-16 px-4 pb-8">
-        <section className="relative mt-2 h-[10vh]">
+        <section className="relative mt-2 hidden h-[10vh] lg:block">
           <div className="absolute inset-0 flex items-center justify-center bg-opacity-50">
             <h1 className="text-center text-4xl font-bold text-black lg:text-5xl">
               About Us

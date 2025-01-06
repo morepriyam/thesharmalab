@@ -2,10 +2,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const pathname = usePathname();
 
   const toggleSidebar = () => {
     setIsOpen2(!isOpen2);
@@ -83,7 +85,11 @@ export default function Sidebar() {
               <Link
                 onClick={closeSidebar}
                 href={"/"}
-                className="block rounded-lg p-2 font-mono font-bold"
+                className={`block rounded-lg p-2 font-mono font-bold ${
+                  pathname === "/"
+                    ? "text-lg text-gray-900"
+                    : "transition-all duration-100 hover:text-lg"
+                }`}
               >
                 The Sharma Lab
               </Link>
@@ -92,7 +98,11 @@ export default function Sidebar() {
               <li key={link.name}>
                 <Link
                   href={link.url}
-                  className="block rounded-lg p-2 font-medium text-gray-400 hover:text-gray-950"
+                  className={`block rounded-lg p-2 font-medium ${
+                    pathname === link.url
+                      ? "text-lg text-gray-950"
+                      : "text-gray-400 transition-all duration-100 hover:text-lg hover:text-gray-950"
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -108,16 +118,7 @@ export default function Sidebar() {
             &times;
           </button>
           <div className="relative flex h-full w-full items-center justify-center">
-            <div className="absolute top-28">
-              <Image
-                src="/pfwlogo.webp"
-                alt="Purdue University Fort Wayne Logo"
-                width={150}
-                height={60}
-                draggable={false}
-                onContextMenu={handleContextMenu}
-              />
-            </div>
+            <div className="absolute top-28"></div>
             <ul className="flex flex-col items-center space-y-4 text-xl">
               <li>
                 <Link
@@ -133,7 +134,11 @@ export default function Sidebar() {
                   <Link
                     onClick={closeSidebar}
                     href={link.url}
-                    className="block p-3 font-medium text-gray-400 hover:text-gray-950"
+                    className={`block p-3 font-medium ${
+                      pathname === link.url
+                        ? "text-gray-950"
+                        : "text-gray-400 transition-all duration-100 hover:text-gray-950"
+                    }`}
                   >
                     {link.name}
                   </Link>
