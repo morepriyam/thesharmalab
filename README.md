@@ -8,171 +8,175 @@
 
 # About the Project
 
-### Project Description: Thesharmalab
+# Project Description: Thesharmalab
 
-**Purpose**:  
-Thesharmalab is an innovative web application designed to serve as a hub for research, education, and community engagement. It aims to showcase the lab's ongoing research projects, publications, and teaching activities, while providing an interactive platform for visitors to connect and collaborate. The target audience includes students, researchers, and educators who are interested in the lab's work and are seeking resources and opportunities for involvement.
+## Overview
 
----
+Thesharmalab is an innovative research and educational platform designed to facilitate collaboration, learning, and knowledge sharing in the field of [specific research discipline or area, e.g., environmental science, computer science]. The platform aims to connect researchers, educators, and students through a user-friendly interface that promotes accessibility and engagement. By leveraging modern web technologies and a robust set of UI components, Thesharmalab creates a dynamic environment for sharing research publications, teaching materials, and collaborative projects.
 
-**Unique Features**:
+## Purpose
 
-1. **Dynamic Research Showcase**: Utilizing the `@radix-ui/react-accordion` and `@radix-ui/react-tabs`, the application offers an intuitive navigation system for users to explore various research projects, publications, and teaching materials. Users can collapse or expand sections based on their interests.
+The primary objectives of Thesharmalab include:
 
-2. **Interactive Dialogs**: Through the `@radix-ui/react-dialog`, Thesharmalab allows users to engage with modal dialogs that provide detailed information on specific projects or publications. This feature enables rich interaction without navigating away from the main content.
+- **Knowledge Dissemination**: Provide a centralized repository of publications and research findings that are easily accessible to students, educators, and researchers.
+- **Community Building**: Foster a thriving community of learners and professionals who can engage with each other's work, share insights, and offer collaborative opportunities.
+- **Enhanced Learning**: Equip educators with resources to improve their teaching methodologies through access to teaching materials and research findings.
 
-3. **Feedback Mechanism**: The application incorporates forms using `@radix-ui/react-input` and `@radix-ui/react-textarea` along with `nodemailer` for seamless contact and feedback submissions. This feature encourages communication between the lab and its visitors.
+## Unique Features
 
-4. **Resource Accessibility**: The platform's structured layout makes it easy for users to find teaching resources alongside research outputs. The `@radix-ui/react-accordion` helps categorize extensive data, enriching user experience.
+### 1. **Comprehensive Resource Sections**
+- **Publications**: A dedicated section for exploring and accessing various research publications categorically organized for easy navigation.
+- **Teaching Materials**: Contains a curated collection of educational resources aimed at improving teaching effectiveness.
 
-5. **Progress Indicators**: With the implementation of `@radix-ui/react-progress`, users can visually track the status of ongoing projects, offering a sense of engagement with the lab's research journey.
+### 2. **Dynamic User Interface Components**
+- The platform is built using Radix UI components which include:
+  - **Accordion**: For organizing large sets of content intuitively.
+  - **Dialog**: To facilitate easy user interactions like feedback and new submission forms.
+  - **Tabs**: Enabling smooth navigation between different sections of content without page reloads.
 
-6. **Responsive and Modern UI**: The application leverages Tailwind CSS for styling and `class-variance-authority` for conditional styling, ensuring a clean and modern responsive design that enhances user experience across devices.
+### 3. **User Engagement Tools**
+- **Contact Form**: Through an API endpoint, users can easily reach out for any inquiries or suggestions.
+- **Document Submission**: A streamlined process allowing users to submit their own publications or teaching materials for consideration.
 
-7. **Community Engagement**: The sidebar component (`src/components/Sidebar.tsx`) provides quick links to related content, upcoming events, and contact information, boosting community interaction and participation.
+### 4. **Rate Limiting and Security**
+- Implemented using Upstash and Express-rate-limit, ensuring secure and controlled API access, preventing abuse and providing a seamless user experience.
 
----
+### 5. **Interactive UI Enhancements**
+- With Tailwind CSS and animations, the platform ensures an aesthetically pleasing and responsive design, enhancing user interaction and satisfaction.
 
-**Structure**:
+## Structure
 
-The project adopts a modular structure for maintainability and scalability. Key directories and files include:
+The structure of Thesharmalab is organized to facilitate easy navigation and maintenance. The file organization is as follows:
 
-- **/src/components/**: Contains reusable components such as buttons, dialogs, and input fields which are built using Radix UI components for robust accessibility and styling.
-  
-- **/src/app/**: Responsible for application routing and page organization. Each major section (e.g., Research, Teaching, Publications) is encapsulated in its own directory, making the codebase easier to navigate. Noteworthy files include:
-  - `page.tsx`: Represents entry points for major sections like `/aboutus`, `/research`, and `/people`.
-  - `layout.tsx`: Defines the main structure of the application.
-  - `api/contact/route.ts`: Handles backend logic for processing contact form submissions
+- **App Structure**
+  - `src/app/`: Main application directory encompassing different pages such as:
+    - `publications/`: Lists all research publications.
+    - `teaching/`: Focusing on teaching resources and materials.
+    - `aboutus/`: Information about the lab and its mission.
+    - `contact/`: A form for user inquiries.
+    - `research/`: Highlights ongoing research projects and initiatives.
+    - `people/`: Showcases team members and their contributions.
+
+- **API and Utility Functions
 
 ---
 
 # Technologies and Libraries
 
-To analyze the specific dependencies of "Thesharmalab," we'll categorize these libraries based on their functionality, explain their roles, and discuss how they contribute to the project as a whole.
+Analyzing the specific dependencies of the "Thesharmalab" project gives insight into the technology stack and tools utilized to build and maintain the application. Here's a breakdown of the listed dependencies, their roles, and contributions to the project:
 
-### User Interface & Design
-1. **@radix-ui/react-accordion**: 
-   - **Role**: Provides an accessible accordion component for collapsible sections.
-   - **Contribution**: Enhances user experience by allowing content to be organized in a space-efficient way, enabling users to expand/collapse sections as needed.
+### UI and Styling Libraries
+1. **@radix-ui/react-accordion**: ^1.2.1 - Provides accessible and customizable accordion components for organizing content in expandable sections, enhancing UI interactivity.
+   
+2. **@radix-ui/react-dialog**: ^1.1.2 - Facilitates the creation of accessible modal dialogs, helping to manage workflows and user interactions in a confined space.
 
-2. **@radix-ui/react-dialog**: 
-   - **Role**: Offers an accessible dialog (modal) component.
-   - **Contribution**: Facilitates interactions that require user focus, such as confirmations or forms, while maintaining accessibility standards.
+3. **@radix-ui/react-icons**: ^1.3.0 - Offers a set of icons that are optimized for React components, helping to improve the visual appeal and usability of the application.
 
-3. **@radix-ui/react-icons**: 
-   - **Role**: Contains a set of icons that can be easily used across the application.
-   - **Contribution**: Helps in enhancing the UI through visual aids, improving the overall aesthetic and usability of the app.
+4. **@radix-ui/react-progress**: ^1.1.0 - Implements a progress component that indicates the status of ongoing tasks, improving user experience by visually communicating loading states.
 
-4. **@radix-ui/react-progress**: 
-   - **Role**: Provides a progress bar component.
-   - **Contribution**: Visualizes loading states or completion status, offering users feedback during lengthy operations.
+5. **@radix-ui/react-slot**: ^1.1.0 - Allows for more flexible component composition by providing a way to pass children components into a slot, promoting reusability.
 
-5. **@radix-ui/react-slot**: 
-   - **Role**: Utilized for creating reusable components that can accept arbitrary children.
-   - **Contribution**: Increases flexibility in component design, allowing for more dynamic and adaptable UI elements.
+6. **@radix-ui/react-tabs**: ^1.1.3 - Enables the creation of tabbed interfaces, allowing users to navigate between different views or sections of content.
 
-6. **@radix-ui/react-tabs**: 
-   - **Role**: Supplies a tabbed navigation component.
-   - **Contribution**: Organizes content in a way that is easy to navigate, allowing users to switch between different views or sections effectively.
+7. **lucide-react**: ^0.441.0 - A library for using Lucide icons, adding a modern and scalable iconography to the project.
 
-7. **lucide-react**: 
-   - **Role**: A library of customizable icons built specifically for React.
-   - **Contribution**: Provides themed icons, enhancing visual appeal while ensuring that icons are easy to customize for branding.
+8. **tailwind-merge**: ^2.5.2 - Merges Tailwind CSS classes intelligently, simplifying the process of conditional class application while maintaining styling integrity.
 
-8. **tailwindcss-animate**: 
-   - **Role**: Integrates animation capabilities into Tailwind CSS.
-   - **Contribution**: Adds animated transitions to components, improving user interactions and engagement.
+9. **tailwindcss-animate**: ^1.0.7 - Provides utility classes for common animations with Tailwind CSS, enhancing the UI's interactivity and aesthetic quality.
 
-### State Management and Utilities
-1. **axios**: 
-   - **Role**: A promise-based HTTP client for making requests.
-   - **Contribution**: Simplifies API calls, providing data fetching capabilities that are essential for dynamic web applications.
+### State Management and Validation
+10. **class-variance-authority**: ^0.7.0 - A utility to create class names based on variants, which can help manage component styling more efficiently.
 
-2. **class-variance-authority**: 
-   - **Role**: A utility for managing variants of class names in a declarative way.
-   - **Contribution**: Helps maintain clean and manageable styles for components, especially when multiple variants are in play.
+11. **clsx**: ^2.1.1 - A simple utility for conditionally joining class names together, useful in dynamically generating class names based on component states or props.
 
-3. **clsx**: 
-   - **Role**: A utility for constructing className strings conditionally.
-   - **Contribution**: Streamlines the application of CSS classes
+12. **validator**: ^13.15.0 - Implements string validation and sanitization methods, helping to ensure that input data meets specific formats or criteria.
+
+13. **xss**: ^1.0.15 - Provides protection against cross-site scripting (XSS) by sanitizing user input, which is crucial for maintaining security.
+
+### Backend and API Integration
+14. **@upstash/ratelimit**: ^1.1.2 - A rate limiting library for API requests on the server side, preventing abuse and ensuring fair usage of resources.
+
+15. **@up
 
 ---
 
 # Key Features
 
-Based on the provided file structure of "Thesharmalab," we can derive a few key project-specific features and functionalities that illustrate its design and intended purpose. Here’s a breakdown of these features:
+Based on the provided file structure for "Thesharmalab," here are the key project-specific features likely associated with the application:
 
-### Key Features
+1. **Publications Section**: 
+   - Located at `src/app/publications/page.tsx`, this section is dedicated to displaying research papers, articles, and other scholarly works associated with Thesharmalab.
 
-1. **Modular Component Structure**:
-   - The presence of files like `Footer.tsx`, `Sidebar.tsx`, and various UI components (e.g., `accordion.tsx`, `card.tsx`, `input.tsx`, etc.) suggests a modular design, enabling the reuse of UI elements throughout the application for consistency and maintenance.
+2. **Teaching Information**:
+   - The file `src/app/teaching/page.tsx` suggests there is a dedicated section for educational content or courses offered by Thesharmalab, potentially including syllabus details, course structures, or teaching methodologies.
 
-2. **User Interface Elements**:
-   - The types of UI components such as buttons, input fields, text areas, and dialogs indicate a focus on interactive elements that allow users to perform actions (e.g., submit contact forms, navigate, etc.) seamlessly.
+3. **Research Focus**:
+   - The presence of `src/app/research/page.tsx` indicates a section focusing on ongoing research projects, results, and possibly collaborations within Thesharmalab.
 
-3. **Dynamic Content Pages**:
-   - The existence of specific pages like `contact/page.tsx`, `aboutus/page.tsx`, `people/page.tsx`, `research/page.tsx`, `publications/page.tsx`, and `teaching/page.tsx` implies the application serves multiple content areas related to research, staff, publications, and teaching, suggesting it may function as a laboratory or academic site.
+4. **Team or People Section**:
+   - The file at `src/app/people/page.tsx` likely contains information about the members of Thesharmalab, perhaps including bios, roles, and contact details.
 
-4. **API Integration**:
-   - The inclusion of the API route file (`api/contact/route.ts`) indicates that the application is set up to handle form submissions and possibly return data, allowing interaction with backend services, such as sending contact inquiries.
+5. **About Us Page**:
+   - `src/app/aboutus/page.tsx` provides background information on Thesharmalab, its mission, vision, and history.
 
-5. **Centralized Layout Management**:
-   - The presence of `layout.tsx` indicates that there is a centralized layout management system, promoting a consistent structure across different pages, which enhances user experience.
+6. **Contact Information**:
+   - The presence of `src/app/contact/page.tsx` and an API for contact at `src/app/api/contact/route.ts` indicates functionalities for users to contact Thesharmalab, possibly through a form or direct email.
 
-6. **Utilities for Common Functions**:
-   - The `src/lib/utils.ts` file suggests there are utility functions that may be shared across components, enhancing code maintainability and promoting DRY (Don't Repeat Yourself) principles.
+7. **Dynamic Layout**:
+   - The layout file at `src/app/layout.tsx` suggests a common structure for various pages, possibly including navigation and site-wide elements to maintain consistency.
 
-7. **Research and Publications Focus**:
-   - The indication of dedicated pages for research and publications points to the thematic emphasis on sharing scholarly activities, findings, and resources from the lab.
+8. **Security Features**:
+   - The `src/lib/security.ts` file indicates the presence of security measures, which could involve user authentication and data protection measures.
 
-8. **Content Organization**:
-   - The specific structure for organizing content—like separating teaching materials, contact forms, and about us information—indicates a well-thought-out approach to content management, aimed at providing visitors a cohesive and informative experience.
+9. **Utility Functions**:
+   - The `src/lib/utils.ts` file suggests the inclusion of reusable utility functions that could be used throughout the application to streamline development processes.
 
-### Purpose Overview
-Given the file structure and its components, "Thesharmalab" appears to be a web application designed for a research lab or academic institution. Its purpose likely revolves around providing information about the lab’s research, personnel, teaching initiatives, and publications, and facilitating user interactions through forms and information sharing. This modular and organized approach enhances user engagement while allowing for easy updates and maintenance.
+10. **UI Components**:
+    - The numerous UI component files in `src/components/ui/` (such as card, textarea, accordion, input, button, badge, and dialog) indicate a modular design, allowing for reusable components to maintain consistency and efficiency in the user interface design.
 
-Overall, Thesharmalab's structure highlights its goal of being an accessible, informative, and interactive platform for users interested in research, teaching, and contributions from the laboratory.
+11. **Navigation Elements**:
+    - The `src/components/Sidebar.tsx` and `src/components/Footer.tsx` imply that the application has dedicated navigation components to enhance user experience, providing easy access to different sections of the site.
+
+Overall, "Thesharmalab" appears to be a structured and modular web application focused on research, teaching, and community engagement, with clear features for user interaction, information dissemination, and security.
 
 ---
 
 # File Structure
 
-The file structure of the "Thesharmalab" project is organized in a way that promotes a clear separation of concerns, allowing for maintainability, scalability, and a logical flow of the application's components and pages. Below is a breakdown of each directory and file, along with its significance to the overall architecture of the project.
+The file structure of "Thesharmalab" indicates a well-organized React application that uses TypeScript. It also suggests a modular design, which is beneficial for easy maintenance and scalability. Below, we will break down the file structure into categories based on their roles and significance within the project.
 
-### Core Components (src/components)
-The `src/components` directory contains reusable UI components which can be utilized throughout the application. This modular approach fosters reusability and standardizes the design across different parts of the application.
+### 1. **Application Pages**
+Located in the `src/app/` directory, these files represent different pages in the application. The structure facilitates easy navigation between various themes presented on the website.
 
-- **`Footer.tsx`**: Contains the layout and logic for the application's footer. It potentially includes copyright information, links, or contact details.
-  
-- **`Sidebar.tsx`**: Defines the sidebar component. This is likely used for navigation or quick access to various sections of the application.
+- **`src/app/aboutus/page.tsx`**: Contains information about the lab, its vision, mission, and team members, effectively communicating the lab’s identity.
+- **`src/app/contact/page.tsx`**: Provides a contact form or information to encourage communication with visitors or prospective collaborators/students.
+- **`src/app/publications/page.tsx`**: Displays research publications or work done by the lab, which is significant for showcasing credibility and outputs.
+- **`src/app/research/page.tsx`**: Details the ongoing research projects in the lab, highlighting areas of focus and innovation.
+- **`src/app/teaching/page.tsx`**: Presents educational offerings by the lab, potentially listing courses or workshops available.
+- **`src/app/people/page.tsx`**: Introduces the team members of the lab, which is crucial for building trust and engagement with potential collaborators.
+- **`src/app/page.tsx`**: Likely serves as the landing page for the application, centralizing the navigation to different sections.
 
-#### UI Components (src/components/ui)
-The `ui` folder inside `components` consists of a variety of UI elements that serve foundational roles in building user interfaces.
+### 2. **API Routes**
+The `src/app/api/` folder contains server-side logic that manages data handling.
 
-- **`accordion.tsx`**: Implements an accordion component, often used for expandable sections of content.
-  
-- **`card.tsx`**: Represents a card component, which typically displays content in a contained format, useful for showcasing items like research or publications.
-  
-- **`input.tsx`**: Contains a reusable input field component for forms or data entries.
-  
-- **`textarea.tsx`**: Similar to `input.tsx`, but for multi-line text input, often used for messages or extended content.
-  
-- **`dialog.tsx`**: Implements a dialog or modal component for displaying alerts, confirmations, or additional information without navigating away from the current page.
-  
-- **`button.tsx`**: A standard button component to ensure consistency across different button usages throughout the application.
+- **`src/app/api/contact/route.ts`**: This likely defines the backend API handling for the contact form submissions. It plays a crucial role in connecting the frontend and backend by handling form data and potentially sending out emails or storing messages.
 
-### Application Pages (src/app)
-The `src/app` directory organizes the routes and main pages of the application. Each page corresponds to a unique view in the application.
+### 3. **Components**
+The `src/components/` directory houses reusable components that enhance consistency and maintainability across the application.
 
-- **`page.tsx`**: This is likely the homepage of the application.
-  
-- **`layout.tsx`**: Contains the layout structure that wraps around most pages, setting the consistent UI framework (like header, footer, and sidebar).
-  
-- **Subdirectories (`contact`, `people`, `aboutus`, `research`, `publications`, `teaching`)**: Each of these directories typically contains at least one file representing a respective page in the application. 
+- **UI Components (`src/components/ui/`)**: These include specific elements like buttons, input fields, text areas, accordions, badges, and dialogs. 
+  - **Examples**:
+    - **`button.tsx`**: Standardizes button styles and behavior across the site.
+    - **`input.tsx`**: Streamlines form input across various pages ensuring a consistent user experience.
 
-    - **`page.tsx`**: Main file defining the layout and content for each specific section (e.g., contact information, details about people in the lab, research topics, published works, and teaching engagements).
+- **`src/components/Footer.tsx`**: Represents the footer of the entire application, typically containing links to social media, copyright information, and additional navigation help.
 
-    - **`people.ts`, `research.ts`, `publications.ts`**: Additional modules or components that likely handle specific logic or data processing related to the respective pages. This keeps the page-related logic modular and the codebase maintainable.
+- **`src/components/Sidebar.tsx`**: This could provide sidebar navigation for easy access to different sections of the site, enhancing user navigation.
+
+### 4. **Libraries**
+The `src/lib/` folder suggests custom utility functions and security measures.
+
+- **`src/lib/utils.ts`**: Contains
 
 ---
 
@@ -180,21 +184,16 @@ The `src/app` directory organizes the routes and main pages of the application. 
 
 # Getting Started with Thesharmalab
 
-Welcome to the Thesharmalab project! This guide will help you set up and run the project smoothly. Please follow the detailed steps below to ensure you have everything you need.
+Welcome to the Thesharmalab project! This guide will help you set up and run the project with all required dependencies. Follow the detailed steps below to get started.
 
 ## Prerequisites
 
-Make sure you have the following installed on your machine:
+Before you begin, ensure you have the following installed on your machine:
 
-- [Node.js](https://nodejs.org/) (Version 16 or above)
-- [npm](https://www.npmjs.com/get-npm) (comes with Node.js, but Yarn can also be used)
+- **Node.js** (version 14.x or higher) - [Download Node.js](https://nodejs.org/)
+- **npm** (Node Package Manager, comes with Node.js) or **yarn** (install separately if preferred)
+- A code editor (e.g., Visual Studio Code)
 
 ## Step 1: Clone the Repository
 
-Start by cloning the Thesharmalab repository from GitHub. Open your terminal and run:
-
-```bash
-git clone https://github.com/your-username/thesharmalab.git
-```
-
-(Replace `your-username` with the actual username or organization name that hosts the repository)
+First, clone the Thesharmalab repository from GitHub. Open your terminal and run the following command:
