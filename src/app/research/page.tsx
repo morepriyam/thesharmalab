@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { researchAreas } from "./research";
+import { researchAreas } from "@/data/research";
 
 export default function Page() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);

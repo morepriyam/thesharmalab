@@ -4,15 +4,18 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { contactInfo, officeHours, contactFormLabels } from "@/data/contact";
 
 export default function Page() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    honeypot: "", // Honeypot field
   });
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "success" | "error" | "ratelimit">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -23,13 +26,30 @@ export default function Page() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("idle");
+    setErrorMessage("");
+    
     try {
       await axios.post("/api/contact", formData);
       setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", honeypot: "" });
     } catch (error) {
       console.error("Failed to send message:", error);
-      setStatus("error");
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 429) {
+          setStatus("ratelimit");
+          const resetTime = new Date(error.response.data.resetTime);
+          setErrorMessage(`Too many requests. Please try again after ${resetTime.toLocaleString()}`);
+        } else if (error.response?.data.errors) {
+          setStatus("error");
+          setErrorMessage(error.response.data.errors.join(", "));
+        } else {
+          setStatus("error");
+          setErrorMessage("Failed to send message. Please try again.");
+        }
+      } else {
+        setStatus("error");
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -42,7 +62,7 @@ export default function Page() {
           </h2>
           <div className="aspect-video">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13588.688229993804!2d-85.1118478!3d41.1172163!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8815e335ffdb499b%3A0x8046fb8a798c81da!2sScience%20Building!5e1!3m2!1sen!2sus!4v1729704015549!5m2!1sen!2sus"
+              src={contactInfo.mapEmbedUrl}
               width="100%"
               height="100%"
               allowFullScreen={true}
@@ -57,15 +77,27 @@ export default function Page() {
             Contact Us
           </h2>
           <form className="space-y-4" onSubmit={handleSubmit}>
+            {/* Honeypot field - hidden from real users */}
+            <Input
+              type="text"
+              name="honeypot"
+              onChange={handleChange}
+              value={formData.honeypot}
+              style={{ display: 'none' }}
+              tabIndex={-1}
+              aria-hidden="true"
+              autoComplete="off"
+            />
+            
             <div>
               <label htmlFor="name" className="mb-1 block text-sm font-medium">
-                Name
+                {contactFormLabels.name.label}
               </label>
               <Input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Your Name"
+                placeholder={contactFormLabels.name.placeholder}
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -74,13 +106,13 @@ export default function Page() {
 
             <div>
               <label htmlFor="email" className="mb-1 block text-sm font-medium">
-                Email
+                {contactFormLabels.email.label}
               </label>
               <Input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="you@example.com"
+                placeholder={contactFormLabels.email.placeholder}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -88,17 +120,14 @@ export default function Page() {
             </div>
 
             <div>
-              <label
-                htmlFor="message"
-                className="mb-1 block text-sm font-medium"
-              >
-                Message
+              <label htmlFor="message" className="mb-1 block text-sm font-medium">
+                {contactFormLabels.message.label}
               </label>
               <Textarea
                 id="message"
                 name="message"
                 rows={4}
-                placeholder="Your message..."
+                placeholder={contactFormLabels.message.placeholder}
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -106,8 +135,12 @@ export default function Page() {
             </div>
 
             <div className="text-center">
-              <Button type="submit" className="font-mono">
-                Send Message
+              <Button 
+                type="submit" 
+                className="font-mono"
+                disabled={status === "ratelimit"}
+              >
+                {contactFormLabels.submitButton}
               </Button>
             </div>
             {status === "success" && (
@@ -115,9 +148,9 @@ export default function Page() {
                 Message sent successfully!
               </p>
             )}
-            {status === "error" && (
+            {(status === "error" || status === "ratelimit") && (
               <p className="text-center text-red-600">
-                Failed to send message. Please try again.
+                {errorMessage}
               </p>
             )}
           </form>
@@ -128,22 +161,34 @@ export default function Page() {
         <h1 className="mb-4 text-2xl font-bold lg:text-3xl">Contact</h1>
         <div className="font-mono text-lg text-muted-foreground">
           <h2 className="mb-2 text-2xl font-bold text-black">
-            Dr. Arjun Sharma
+            {contactInfo.name}
           </h2>
-          <p>Dept. of Chemical and Biochemistry</p>
-          <p>Purdue University Fort Wayne</p>
-          <p>Office: Rm #484, Science Building</p>
-          <p>2101 E. Coliseum Blvd.</p>
-          <p>Fort Wayne, IN 46805</p>
+          <p>{contactInfo.department}</p>
+          <p>{contactInfo.university}</p>
+          <p>{contactInfo.office.room}</p>
+          <p>{contactInfo.office.address}</p>
+          <p>{`${contactInfo.office.city}, ${contactInfo.office.state} ${contactInfo.office.zip}`}</p>
+          
+          <div className="mt-6">
+            <h3 className="mb-2 text-xl font-bold text-black">Office Hours</h3>
+            {officeHours.map((hours, index) => (
+              <p key={index}>
+                {hours.day}: {hours.hours}
+              </p>
+            ))}
+          </div>
+
           <div className="text-left">
             <p className="mt-6 font-mono text-muted-foreground">
-              arjun.sharma@pfw.edu
+              {contactInfo.contact.email}
             </p>
             <p className="mb-1 font-mono text-muted-foreground">
-              (260) 481-6067
+              {contactInfo.contact.phone}
             </p>
             <Button asChild className="font-mono">
-              <a href="mailto:arjun.sharma@pfw.edu">Request Appointment</a>
+              <a href={`mailto:${contactInfo.contact.email}`}>
+                Request Appointment
+              </a>
             </Button>
           </div>
         </div>

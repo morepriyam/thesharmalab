@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { teamMembers, principalInvestigator } from "./people";
+import { teamMembers, principalInvestigator } from "@/data/people";
 export default function Page() {
   const handleContextMenu = (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,

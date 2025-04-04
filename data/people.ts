@@ -36,7 +36,7 @@ export const teamMembers = [
     name: "Izabela Djurovic-Topalovic",
     role: "Graduate Student",
     description:
-      "I am Izabela Djurovic-Topalovic, an undergraduate student pursuing an Information Systems degree at Purdue Fort Wayne. I aim to develop skills and knowledge valuable to today’s digital industries during my studies. As part of Dr. Sharma’s team, I use molecular dynamics simulations to understand protein-protein interactions in various cancer regulation pathways.",
+      "I am Izabela Djurovic-Topalovic, an undergraduate student pursuing an Information Systems degree at Purdue Fort Wayne. I aim to develop skills and knowledge valuable to today's digital industries during my studies. As part of Dr. Sharma's team, I use molecular dynamics simulations to understand protein-protein interactions in various cancer regulation pathways.",
     imageSrc: "/people/izabela.webp",
     email: "djurii01@pfw.edu",
   },
@@ -52,8 +52,8 @@ export const teamMembers = [
     name: "Austin Jones",
     role: "Graduate Student",
     description:
-      "Austin Jones is currently a lab manager at Purdue University in Fort Wayne. He received his bachelor’s degree in chemistry from Ball State University in 2020. As an undergraduate, he was involved in a research project focusing on the synthesis of the natural product Lavendamycin under the guidance of Professor Robert Sammelson. After his undergraduate program, Austin earned his master’s degree from Michigan State University in 2022 under the direction of Professor Karen Draths. As a graduate student, he investigated the reaction mechanism of terminal alkyne carboxylation using organic bases and carbon dioxide. Austin is currently pursuing an additional bachelor's degree in data analytics while working at PFW.",
+      "Austin Jones is currently a lab manager at Purdue University in Fort Wayne. He received his bachelor's degree in chemistry from Ball State University in 2020. As an undergraduate, he was involved in a research project focusing on the synthesis of the natural product Lavendamycin under the guidance of Professor Robert Sammelson. After his undergraduate program, Austin earned his master's degree from Michigan State University in 2022 under the direction of Professor Karen Draths. As a graduate student, he investigated the reaction mechanism of terminal alkyne carboxylation using organic bases and carbon dioxide. Austin is currently pursuing an additional bachelor's degree in data analytics while working at PFW.",
     imageSrc: "/people/austin.webp",
     email: "jone2401@pfw.edu",
   },
-];
+]; 

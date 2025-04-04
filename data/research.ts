@@ -24,4 +24,4 @@ export const researchAreas = [
       "We employ multiscale modeling approaches, integrating quantum mechanics, molecular dynamics, and coarse-grained simulations to study complex biological systems. This allows us to explore molecular interactions at different scales and provides a comprehensive understanding of biomolecular systems' behavior under various conditions.",
     image: "/research/protein-protein-interactions.jpg",
   },
-];
+]; 
